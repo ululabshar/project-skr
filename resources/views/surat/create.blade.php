@@ -5,12 +5,17 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <form action="{{ route('surat.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="/surat/store" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
             <label>Nomor Surat</label>
             <input type="text" name="nomor_surat" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Nama Surat</label>
+            <input type="text" name="nama_surat" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -49,4 +54,3 @@
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 </div>
-

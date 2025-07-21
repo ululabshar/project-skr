@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/surat', [SuratController::class, 'create']);
-Route::post('/surat/store', [SuratController::class, 'store'])->name('surat.store');
+Route::post('/surat/store', [SuratController::class, 'store']);
 Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
