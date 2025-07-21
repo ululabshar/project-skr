@@ -1,7 +1,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed; height: 100vh;">
             <!-- Brand Logo -->
             <a href="{{ url('/') }}" class="brand-link">
-                <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
+                <span class="brand-text font-weight-light">Dokumen Format</span>
             </a>
             <!-- Sidebar -->
             <div class="sidebar">
