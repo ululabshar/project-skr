@@ -15,14 +15,19 @@ return new class extends Migration
     {
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_surat');
-            $table->string('nama_surat');
-            $table->date('tanggal_surat');
-            $table->string('pengirim');
-            $table->string('perihal');
-            $table->text('isi');
-            $table->enum('jenis_surat', ['masuk', 'keluar']);
-            $table->string('file_surat')->nullable(); // path file PDF
+            $table->string('nama');
+            $table->string('jabatan');
+            $table->string('nik_sap');
+            $table->string('person_grade');
+            $table->text('tujuan_dinas');
+            $table->string('keperluan_dinas');
+            $table->date('berangkat_tanggal')->nullable(); // Tambahkan ->nullable()
+            $table->date('kembali_tanggal')->nullable();
+            $table->string('fasilitas_transport');
+            $table->string('pelatihan');
+            $table->string('rombongan');
+            // $table->enum('jenis_surat', ['masuk', 'keluar']);
+            // $table->string('file_surat')->nullable(); // path file PDF
             $table->timestamps();
         });
     }

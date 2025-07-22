@@ -10,13 +10,16 @@ class Surat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nomor_surat',
-        'nama_surat',
-        'tanggal_surat',
-        'pengirim',
-        'perihal',
-        'isi',
-        'jenis_surat',
-        'file_surat',
+        'nama',
+        'jabatan',
+        'nik_sap',
+        'person_grade',
+        'tujuan_dinas',
+        'keperluan_dinas',
+        'berangkat_taggal',
+        'kembali_tanggal',
+        'fasilitas_transport',
+        'pelatihan',
+        'rombongan',
     ];
 }
