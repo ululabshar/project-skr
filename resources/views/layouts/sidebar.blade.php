@@ -1,6 +1,7 @@
  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed; height: 100vh;">
             <!-- Brand Logo -->
-            <a href="{{ url('/') }}" class="brand-link text-center">
+            <a href="{{ url('/') }}" class="brand-link text-center flex align-items-center">
+                <img src="assets/img/logo-ptpn.png" alt="" width="60" height="60">
                 <span class="brand-text font-weight-light">Dokumen Format</span>
             </a>
             <!-- Sidebar -->

@@ -25,6 +25,9 @@ class DashboardController extends Controller
 
         $surats = $query->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('dashboard', compact('surats'));
+        return view('dashboard',  [
+            'title' => 'Home',
+            'surats' => $surats,
+        ]);
     }
 }
