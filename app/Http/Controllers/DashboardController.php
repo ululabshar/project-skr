@@ -10,9 +10,21 @@ class DashboardController extends Controller
     /**
      * Show the application dashboard.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $surats = Surat::orderBy('updated_at', 'desc')->get();// Fetch all users from the database
+        $query = Surat::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
+                    ->orWhere('tujuan_dinas', 'like', "%{$search}%")
+                    ->orWhere('jabatan', 'like', "%{$search}%");
+            });
+        }
+
+        $surats = $query->orderBy('created_at', 'desc')->paginate(10);
+
         return view('dashboard', compact('surats'));
     }
 }
