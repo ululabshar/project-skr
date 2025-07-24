@@ -5,52 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Perintah Perjalanan Dinas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <style>
         body {
             background-color: #f8f9fa; /* Light background for the page */
         }
-        .form-container {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-top: 50px;
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #1f1d1dff;
+            margin-bottom: 30px;
         }
-        .navbar-brand {
-            color: #212529 !important; /* Warna hitam gelap Bootstrap (atau #000) */
-            /* Anda mungkin juga ingin mengatur ukuran font agar tidak terlalu kecil */
-            /* font-size: 1.25rem; */ /* Ukuran default h5 Bootstrap */
+        .header-logo {
+            max-width: 150px; /* Sesuaikan ukuran logo */
         }
-               /* Jika baris alamat dan telepon/email ingin tetap putih, Anda bisa tambahkan span atau div di dalamnya */
+        .header-info h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #312b2bff;
+        }
+        .header-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-white">
-        <div class="container">
-            <a class="navbar-brand"href="#">
-            REGIONAL 7<br>
-            Alamat : Jl.Teuku Umar No.300, Bandar Lampung<br>
-            Telp : 0721-702233 Email : skrh_reg7@ptpn1.co.id
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('surat.create') }}">
-                            {{-- Menggunakan helper asset() untuk link gambar --}}
-                            <img src="{{ asset('assets/img/logo-ptpn.png') }}" alt="logo" class="nav-icon">
-                            {{-- Jika Anda masih ingin teks disamping ikon, aktifkan baris ini --}}
-                            {{-- Input Surat --}}
-                        </a>
-                    </li>
-                    </ul>
+    
+    <div class="container">
+        {{-- Header Section --}}
+        <div class="header-section">
+            <div class="header-info">
+                <h1>REGIONAL 7</h1>
+                <p>Alamat : Jl.Teuku Umar No.300, Bandar Lampung</p>
+                <p>Telp : 0721-702233 Email : skrh_reg7@ptpn1.co.id</p>
+            </div>
+            <div>
+                {{-- Make sure the path to your logo is correct --}}
+                <img src="{{ asset('assets/img/logo-ptpn.png') }}" alt="logo PTPN1" class="header-logo">
             </div>
         </div>
-    </nav>
-
-    <div class="container mt-4">
+        
+        {{-- Content section yielded from other views --}}
         @yield('content')
     </div>
 

@@ -16,7 +16,7 @@ class Surat extends Model
         'person_grade',
         'tujuan_dinas',
         'keperluan_dinas',
-        'berangkat_taggal',
+        'berangkat_tanggal',
         'kembali_tanggal',
         'fasilitas_transport',
         'pelatihan',
