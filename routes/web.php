@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SuratController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SppdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+route::get('/', function () {
+    return view('home');
+})->name('home');
 
+route::get('/sppd/generate/{id}', [SppdController::class, 'generate'])->name('sppd.generate');
+Route::delete('/sppd/{id}', [SppdController::class, 'destroy'])->name('sppd.destroy');
 Route::get('/surat/create', [SuratController::class, 'create'])->name('surat.create');
 Route::post('/surat/store', [SuratController::class, 'store'])->name('surat.store');
-Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

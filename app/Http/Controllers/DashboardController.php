@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Surat;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +12,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all(); // Fetch all users from the database
-        return view('dashboard', compact('users'));
+        $surats = Surat::orderBy('updated_at', 'desc')->get();// Fetch all users from the database
+        return view('dashboard', compact('surats'));
     }
 }

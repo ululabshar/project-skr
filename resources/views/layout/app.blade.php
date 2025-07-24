@@ -1,58 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surat Perintah Perjalanan Dinas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         body {
-            background-color: #f8f9fa; /* Light background for the page */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{{ asset("assets/img/bg.jpg") }}') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -2;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            min-height: 100vh;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
         .header-section {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 2px solid #1f1d1dff;
-            margin-bottom: 30px;
+            align-items: flex-start;
+            padding-bottom: 10px;
         }
-        .header-logo {
-            max-width: 150px; /* Sesuaikan ukuran logo */
-        }
+
         .header-info h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #312b2bff;
+            margin-bottom: 5px;
         }
+
         .header-info p {
             margin: 0;
             font-size: 0.9rem;
-            color: #6c757d;
+        }
+
+        .header-logo {
+            max-height: 70px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            color: #ffffffff !important;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid #ffffff80;
+            margin-bottom: 10px;
         }
     </style>
 </head>
+
 <body>
-    
-    <div class="container">
-        {{-- Header Section --}}
+    <!-- Background -->
+    <div class="background-image"></div>
+    <div class="background-overlay"></div>
+
+    <!-- Konten -->
+    <div class="container content-wrapper position-relative z-1 text-white">
+        <!-- Header -->
         <div class="header-section">
             <div class="header-info">
-                <h1>REGIONAL 7</h1>
-                <p>Alamat : Jl.Teuku Umar No.300, Bandar Lampung</p>
-                <p>Telp : 0721-702233 Email : skrh_reg7@ptpn1.co.id</p>
+                <h1>PTPN I REGIONAL VII</h1>
+                <p>Alamat: Jl. Teuku Umar No.300, Bandar Lampung</p>
+                <p>Telp: 0721-702233 | Email: skrh_reg7@ptpn1.co.id</p>
             </div>
-            <div>
-                {{-- Make sure the path to your logo is correct --}}
-                <img src="{{ asset('assets/img/logo-ptpn.png') }}" alt="logo PTPN1" class="header-logo">
+            <div class="ptpn-logo">
+                <img src="{{ asset('assets/img/logo-ptpn.png') }}" alt="Logo PTPN1" class="header-logo">
             </div>
         </div>
-        
-        {{-- Content section yielded from other views --}}
-        @yield('content')
+
+        <hr>
+
+        <!-- Navbar -->
+        <nav class="mb-4">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('/') ? 'active fw-bold' : '' }}" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('surat.create') ? 'active fw-bold' : '' }}" href="{{ route('surat.create') }}">Isi Surat Perjalanan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('login') ? 'active fw-bold' : '' }}" href="{{ route('login') }}">Login admin</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Content -->
+        <div class="content">
+            @yield('content')
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>
